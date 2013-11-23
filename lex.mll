@@ -21,8 +21,6 @@ let integer = ( "0x" | "0o" | "0b" )? digit+
 let identifier = [ 'A'-'Z' 'a'-'z' ]+ digit*
 
 rule main = parse
-| newline
-  { update_loc lexbuf; main lexbuf }
 | whitespace+
   { main lexbuf }
 | integer as i
