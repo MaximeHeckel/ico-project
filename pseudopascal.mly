@@ -9,6 +9,7 @@ open Printf
 %token LPAREN RPAREN
 %token <float> NUM
 %token PLUS MINUS MULTIPLY DIVIDE
+%token BEGIN END
 
 %left PLUS MINUS
 %left MULTIPLY DIVIDE
@@ -34,7 +35,8 @@ exp:	NUM			{ $1 }
 	| exp DIVIDE exp	{ $1 /. $3 }
 	| MINUS exp %prec NEG	{ -. $2 }
 	| LPAREN exp RPAREN	{ $2 }
+  | BEGIN NEWLINE exp NEWLINE END { $3 }
+  | BEGIN exp END { $2 }
 ;
-
 %%
 

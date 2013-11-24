@@ -39,13 +39,13 @@ rule token = parse
   | "["   { LBRACKET }
   | "]"   { RBRACKET } 
   | ","   { COMMA }
-  | ":="  { COLONEQ } *)
-(*  | ":"   { COLON }
+  | ":="  { COLONEQ } 
+  | ":"   { COLON }
   | "."   { DOT }
-  | "program"  { PROGRAM }
+  | "program"  { PROGRAM } *)
   | "begin"  { BEGIN }
   | "end"  { END }
-  | "if"  { IF }
+  (* | "if"  { IF }
   | "then"  { THEN }
   | "else"  { ELSE }
   | "while"  { WHILE }
