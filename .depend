@@ -1,6 +1,6 @@
-calc.cmo: calc.cmi 
-calc.cmx: calc.cmi 
-lexer.cmo: calc.cmi 
-lexer.cmx: calc.cmx 
+pseudopascal.cmo: pseudopascal.cmi 
+pseudopascal.cmx: pseudopascal.cmi 
+lexer.cmo: pseudopascal.cmi 
+lexer.cmx: pseudopascal.cmx 
 main.cmo: lexer.cmo 
 main.cmx: lexer.cmx 

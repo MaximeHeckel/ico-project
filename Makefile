@@ -1,14 +1,14 @@
-TARGET = calc
+TARGET = pseudopascal
 
-calc: lexer.cmo calc.cmo main.cmo
-	ocamlc -o $@ lexer.cmo calc.cmo main.cmo
+pseudopascal: lexer.cmo pseudopascal.cmo main.cmo
+	ocamlc -o $@ lexer.cmo pseudopascal.cmo main.cmo
 
 depend:
 	ocamldep *.ml *.mli > .depend
 
 clean:
 	rm -rf *.cmi *.cmo $(TARGET)
-	rm -rf calc.ml calc.mli lexer.ml lexer.mli
+	rm -rf pseudopascal.ml pseudopascal.mli lexer.ml lexer.mli
 
 .SUFFIXES: .ml .mli .mll .mly .cmo .cmi
 

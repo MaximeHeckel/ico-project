@@ -1,5 +1,3 @@
-/* file: calc.mly */
-/* Infix notatoin calculator -- calc */
 /*
 %{
 open Printf

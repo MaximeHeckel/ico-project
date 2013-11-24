@@ -6,7 +6,7 @@
    and raises End_of_file on EOF. *)
 
 {
-  open Calc
+  open Pseudopascal
 }
 let digit = ['0'-'9']
 rule token = parse
