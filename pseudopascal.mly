@@ -5,10 +5,10 @@ open Printf
 */
 
 /* Ocamlyacc Declarations */
-%token NEWLINE
+%token NEWLINE SEMICOLON
 %token LPAREN RPAREN
 %token <float> NUM
-%token PLUS MINUS MULTIPLY DIVIDE CARET
+%token PLUS MINUS MULTIPLY DIVIDE
 
 %left PLUS MINUS
 %left MULTIPLY DIVIDE
@@ -25,6 +25,7 @@ input:	/* empty */	{ }
 ;
 line:	NEWLINE		{ }
 	| exp NEWLINE	{ Printf.printf "\t%.10g\n" $1; flush stdout }
+	| exp SEMICOLON	{ Printf.printf "\t%.10g\n" $1; flush stdout }
 ;
 exp:	NUM			{ $1 }
 	| exp PLUS exp		{ $1 +. $3 }
@@ -32,7 +33,6 @@ exp:	NUM			{ $1 }
 	| exp MULTIPLY exp	{ $1 *. $3 }
 	| exp DIVIDE exp	{ $1 /. $3 }
 	| MINUS exp %prec NEG	{ -. $2 }
-	| exp CARET exp		{ $1 ** $3 }
 	| LPAREN exp RPAREN	{ $2 }
 ;
 
