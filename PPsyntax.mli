@@ -24,7 +24,7 @@ and condition =
   | COr of condition * condition
 
 and instruction =
-  | IProcCall of Primitive.calle * expression list (* call par défaut je ne savais pas quoi mettre a voir*)
+  | IProcCall of Primitive.calle * expression list
   | ISetVar of string * expression
   | ISetArray of expression * expression * expression (* Paramêtres : Tableau, index , éléments *)
   | IIf of condition * instruction * instruction
