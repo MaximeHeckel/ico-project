@@ -27,3 +27,18 @@ and instruction =
   | IIf of condition * instruction * instruction
   | IWhile of condition * instruction
   | IBegin of expression list
+
+and program = {
+
+  (*Variables globales*)
+  globals: typ;
+
+  (*Définitions fonctions et procédures*)
+
+  defs: procedure;
+
+  (* Main *)
+
+  main: instruction
+
+}
