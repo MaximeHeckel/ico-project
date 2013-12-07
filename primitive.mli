@@ -1,9 +1,9 @@
 type primitive =
-  | Write
-  | Writeln
-  | Readln
-  | Alloc
+  | Write (*Affichage entier*)
+  | Writeln (*Affichage entier + retour a la ligne*)
+  | Readln (*Lecture entier*)
+  | Alloc (*Allocation*)
 
 type calle =
-  | CUserFunction of string
-  | CPrimitiveFunction of primitive
+  | CUserFunction of string (*Procédure ou fonction définie par l'utilisateur*)
+  | CPrimitiveFunction of primitive (*Opération primitive*)
