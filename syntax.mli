@@ -9,3 +9,13 @@ type expression =
 and constant =
   | ConstBool of bool
   | ConstInt of int32
+
+(* and unop *)
+
+and condition =
+  | CExpression of expression
+  | CNot of condition
+  | CAnd of condition * condition
+  | COr of condition * condition
+
+
