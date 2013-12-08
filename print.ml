@@ -22,10 +22,7 @@ let binop op =
       end
 ;;
 
-let constant() = function
-  | ConstBool true -> sprintf "true"
-  | ConstBool false -> sprintf "false"
-  | ConstInt i -> sprintf "%ld" i
-
-let fundef() (x, t) =
-  sprintf "%s : %a" x typ t
+let priorite = function
+  | Plus | Minus ->2
+  | Times | Div -> 3
+  | _ -> 1;;
