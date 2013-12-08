@@ -22,7 +22,39 @@ let binop op =
       end
 ;;
 
+let plusbas = 0;;
+let plushaut = 4;;
+
 let priorite = function
-  | Plus | Minus ->2
+  | Plus | Minus -> 2
   | Times | Div -> 3
   | _ -> 1;;
+
+let rec expr e = function
+  | Int n -> printf "%d" n
+  | Bool boo -> printf "%s" ( if boo then "true" else "false" )
+  | Get s -> printf "%s" s;
+  | Bin (op, e1, e2) ->
+      let pop = priorite op in
+      let b = p > pop in
+      let p' = if b then 0 else pop in (* 0 = priorite plus basse *)
+      if b then printf "(";
+      expr p' e1;
+      binop op;
+      expr p' e2;
+      if b then printf ")";
+  | Get2 (e1, e2) ->
+      expr plushaut e1;
+      printf "[";
+      expr plusbas  e2;
+      printf "]";
+  | Alloc (e, t) ->
+      printf "alloc (";
+      expr plusbas e;
+      printf ":";
+      type_expr t;
+      printf ")";
+  | Function_call(s,t) ->
+      printf "%s(%a)" s(fun out t -> list ", " (expr plusbas) t) t;
+;;
+
