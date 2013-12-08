@@ -58,3 +58,11 @@ let rec expr e = function
       printf "%s(%a)" s(fun out t -> list ", " (expr plusbas) t) t;
 ;;
 
+let expression p e =
+  printf "[";
+  expr p e;
+  printf "]";;
+
+(* let rec instruction *)
+(* let definition s f *)
+(* let program p *)
