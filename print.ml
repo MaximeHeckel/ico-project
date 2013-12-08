@@ -43,7 +43,7 @@ let rec expr e = function
       binop op;
       expr p' e2;
       if b then printf ")";
-  | Get2 (e1, e2) ->
+  | Geti (e1, e2) ->
       expr plushaut e1;
       printf "[";
       expr plusbas  e2;
