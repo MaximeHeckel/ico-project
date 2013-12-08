@@ -1,3 +1,1 @@
-open Print
-
-val print_program: PPsyntax.program printer
+val program : PPsyntax.program -> unit

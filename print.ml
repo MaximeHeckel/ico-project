@@ -1,23 +1,26 @@
-open Printf
-open Print
-open PPsyntax
+open PPsyntax;;
+open Format;;
 
 let rec typ() = function
-  | TInt -> sprintf "integer"
-  | TBool -> sprintf "boolean"
-  | TArray -> sprintf "array of %a" typ t
+  | Integer -> sprintf "integer"
+  | Boolean -> sprintf "boolean"
+  | Array t -> sprintf "array of %a" type_expr t
 
-let binop = function
-  | OAdd -> sprintf "+"
-  | OSub -> sprintf "-"
-  | OMult -> sprintf "*"
-  | ODiv -> sprintf "/"
-  | OGe -> sprintf ">="
-  | OGt -> sprintf ">"
-  | OLe -> sprintf "<="
-  | OLt -> sprintf "<"
-  | OEq -> sprintf "="
-  | ONeq -> sprintf "<>"
+let binop op =
+  printf "%s"
+    begin match op with
+      | Plus -> "+"
+      | Minus -> "-"
+      | Times -> "*"
+      | Div ->  "/"
+      | Ge -> ">="
+      | Gt -> ">"
+      | Le -> "<="
+      | Lt -> "<"
+      | Eq -> "="
+      | Ne ->"<>"
+      end
+;;
 
 let constant() = function
   | ConstBool true -> sprintf "true"
