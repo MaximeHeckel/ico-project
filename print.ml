@@ -1,6 +1,5 @@
 open Printf
 open Print
-open Primitive
 open PPsyntax
 
 let rec typ() = function
