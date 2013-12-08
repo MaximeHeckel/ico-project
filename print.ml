@@ -25,4 +25,5 @@ let constant() = function
   | ConstBool false -> sprintf "false"
   | ConstInt i -> sprintf "%ld" i
 
-
+let fundef() (x, t) =
+  sprintf "%s : %a" x typ t
