@@ -19,3 +19,10 @@ let binop = function
   | OLt -> sprintf "<"
   | OEq -> sprintf "="
   | ONeq -> sprintf "<>"
+
+let constant() = function
+  | ConstBool true -> sprintf "true"
+  | ConstBool false -> sprintf "false"
+  | ConstInt i -> sprintf "%ld" i
+
+
