@@ -93,5 +93,19 @@ let rec instruction = function
   | Read_int x -> instruction(Procedure_call("read", [Get x]));
 ;;
 
+let definition(s,f) =
+  printf "%s %s" (match f.result with
+    | None -> "Procedure"
+    | _ -> "function"
+  ) s;
+  printf "[(";
+  list (fun x -> printf "var "; var x) f.arguments;
+  printf ")";
+  option (fun t -> (printf " : "; type_expr t)) f.result;
+  printf " ]";
+  declarations f.local_vars;
+  instruction f.body;
+  printf "; ";;
+
 (* let definition s f *)
 (* let program p *)
