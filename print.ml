@@ -107,5 +107,15 @@ let definition(s,f) =
   instruction f.body;
   printf "; ";;
 
-(* let definition s f *)
-(* let program p *)
+let definitions list =
+  List.iter definition list;;
+
+let program p =
+  printf "Program ";
+  declarations p.global_vars;
+  printf " ";
+  definitions p.definitions;
+  instruction p.main;
+  printf " ;;";
+  print_newline();
+;;
