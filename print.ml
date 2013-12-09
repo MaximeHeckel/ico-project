@@ -48,7 +48,7 @@ let rec expr e = function
       printf "[";
       expr plusbas  e2;
       printf "]";
-  | Alloc (e, t) ->
+  | Alloc(e, t) ->
       printf "alloc (";
       expr plusbas e;
       printf ":";
@@ -62,7 +62,36 @@ let expression p e =
   printf "[";
   expr p e;
   printf "]";;
+let rec instruction = function
+  | Set(s,e) -> printf "%s := %a" s(fun out -> expression plusbas) e;
+  | Sequence[i] -> instruction i;
+  | If(e,t1,t2) ->
+      printf "If";
+      expression plusbas e;
+      printf "Then";
+      instruction t1;
+      printf "Else";
+      instruction t2;
 
+  | While(e,i) ->
+      printf "While";
+      expression plusbas e;
+      printf "do";
+      instruction i;
+  | Procedure_call(s, l) ->
+      printf "%s (" s;
+      list ", " (expression plusbas) l;
+      printf ")"
+  | Seti(e1, e2, e3) ->
+      expression plushaut e1;
+      printf "[";
+      expression plusbas e2;
+      printf "] := ";
+      expression plusbas e3;
+  | Write_int n -> instruction(Procedure_call("write", [n]));
+  | Writeln_int n -> instruction(Procedure_call("writeln", [n]));
+  | Read_int x -> instruction(Procedure_call("read", [Get x]));
+;;
 (* let rec instruction *)
 (* let definition s f *)
 (* let program p *)
