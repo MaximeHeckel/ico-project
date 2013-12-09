@@ -92,6 +92,6 @@ let rec instruction = function
   | Writeln_int n -> instruction(Procedure_call("writeln", [n]));
   | Read_int x -> instruction(Procedure_call("read", [Get x]));
 ;;
-(* let rec instruction *)
+
 (* let definition s f *)
 (* let program p *)
