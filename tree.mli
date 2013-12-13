@@ -1,3 +1,3 @@
 open PPsyntax
 
-type a = Feuille of type_expr | Noeud of a * a;;
+type 'a arbrebin = Vide |  Feuille of 'a | Noeud of ('a arbrebin) * ('a arbrebin);;
