@@ -18,3 +18,11 @@ let rec map (f, arbre) = match arbre with
 | Vide -> Vide
 | Feuille(x) -> Feuille(f x)
 | Noeud(b1,b2)-> Noeud ( (map (f, b1)),(map(f,b2)));;
+
+let ssarbredroit a = match a with
+|Vide -> Vide
+| Racine ( b1,n,b2)-> b2;;
+
+let ssarbregauchedroit a = match a with
+|Vide -> Vide
+|Racine (b1,n,b2) -> ssarbredroit b1;;
