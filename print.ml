@@ -1,6 +1,12 @@
 open PPsyntax;;
 open Format;;
 
+let rec type_expr = function
+    Integer -> printf "Integer"
+  | Boolean -> printf "Boolean"
+  | Array t -> printf "Array (%a)" (out type_expr) t
+;;
+
 let rec typ() = function
   | Integer -> sprintf "integer"
   | Boolean -> sprintf "boolean"
