@@ -1,14 +1,15 @@
 #! /bin/sh
 
-pascalDirectory="./exemples_call_graph"
-dotDirectory="./export/exemples_call_graph"
+pascalDirectory="./input"
+dotDirectory="./output"
 OS=`uname`
 
 make > /dev/null
 
 if [ $# -eq 0 ] 
 then
-  echo "0 arguments given, nothing to do."
+  echo "Usage: $0 file.p"
+  echo "  where file.p is the pseudo-pascal file to analyze, located in the input directory"
   exit 1
 fi
 

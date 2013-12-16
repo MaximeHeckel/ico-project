@@ -50,7 +50,7 @@ let print_call_graph_couple i f init =
 ;;
 
 let print_call_graph graph name =
-  let dotfile = open_out("export/"^name^".dot") in
+  let dotfile = open_out(""^name^".dot") in
   print_string ("digraph diagprog\n{\n program;\n"^ (Hashtbl.fold print_call_graph_couple graph "") ^ "}\n");
   close_out dotfile
 ;;

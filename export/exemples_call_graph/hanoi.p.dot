@@ -1,9 +1,0 @@
-digraph diagprog
-{
- program;
- hanoi -> WRITELN;
- hanoi -> hanoi;
- hanoi -> other;
- program -> hanoi;
- program -> READLN;
-}
