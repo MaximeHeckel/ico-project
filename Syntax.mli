@@ -1,5 +1,5 @@
 type type_expr = Integer | Boolean | Array of type_expr;;
-type var_list = (string * type_expr) list;;
+type var_list = ((string list) * type_expr) list;;
 
 type program =Program of var_list * (func_def list) * instruction
 
