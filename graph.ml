@@ -13,9 +13,9 @@ let rec call_graph_expr g =
 
 let rec call_graph_instruction g =
   match g with
-  | Sequence(i::l) -> (call_graph_instruction i) @ (call_graph_instruction(sequence(l)))
+  | Sequence(i::l) -> (call_graph_instruction i) @ (call_graph_instruction(Sequence(l)))
   | Set(s,e) -> (call_graph_expr e)
-  | If(e,i1,i2) -> (call_graph_expr e) @ (graph_instruction i1) @ (graph_instruction i2)
+  | If(e,i1,i2) -> (call_graph_expr e) @ (call_graph_instruction i1) @ (call_graph_instruction i2)
   | While(e,i) -> (call_graph_expr e) @ (call_graph_instruction i)
   | Procedure_call(s,e::e1) -> (call_graph_expr e) @ (call_graph_instruction (Procedure_call(s,e1))) @ [s] (* cf Joris*)
   | Procedure_call(s,_) -> [s]
@@ -33,14 +33,14 @@ let rec remove_dups lst = match lst with
 let rec call_graph_fonction f call_graph =
   match f with
   | Func_def(n, Definition(w,x,c,i))::r -> call_graph_fonction r call_graph;
-  (*(List.iter (Hashtbl.add graph_appel n) (remove_dups(make_call_graph_instr i))) Merci Joris \o/*)
+  (List.iter (Hashtbl.add call_graph n) (remove_dups(call_graph_instruction i))) (*Merci Joris \o/*)
 ;;
 
 let make_call_graph arbresyn = (*cf Joris*)
   let t_hash = Hashtbl.create 100 in
     match arbresyn with
-    | Program(var_decl, fonctions, instructions) -> call_graph_fonction r graph_appel;
-      (List.iter (Hashtbl.add t_hash "program") (remove_dups(make_call_graph_instr instructions))) ;
+    | Program(var_decl, fonctions, instructions) -> call_graph_fonction fonctions t_hash;
+      (List.iter (Hashtbl.add t_hash "program") (remove_dups(call_graph_instruction instructions))) ;
       t_hash
 ;;
 
@@ -51,7 +51,7 @@ let print_call_graph_couple i f init =
 let print_call_graph graph name =
   let dotfile = open_out("export/"^name^".dot") in
   output_string dotfile("digraph "^name^"\n {");
-  output_string dotfile(Hashtbl.fold print_call_graph_couple graph);
+  output_string dotfile(Hashtbl.fold print_call_graph_couple graph "");
   output_string dotfile "}\n";
   close_out dotfile
 ;;
