@@ -54,6 +54,7 @@ let print_call_graph graph name =
   output_string dotfile("digraph "^name^"\n {");
   output_string dotfile(Hashtbl.fold print_call_graph_couple graph "");
   output_string dotfile "}\n";
+  print_string ("digraph diagprog\n{\n program;\n"^ (Hashtbl.fold print_call_graph_couple graph "") ^ "}\n");
   close_out dotfile
 ;;
 
