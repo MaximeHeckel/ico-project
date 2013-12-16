@@ -24,6 +24,6 @@ do
   else
     echo "Unknown os. Cannot open image result."
   fi
-  echo "Result here: $dotDirectory"
+  echo "Result here: ${dotDirectory}/${pascalProgram}.dot, ${dotDirectory}/${pascalProgram}.png"
   echo "------------"
 done
