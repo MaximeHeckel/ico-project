@@ -10,6 +10,8 @@ and definition = Definition of var_list * type_expr option * var_list * instruct
 and expression =
   | Int of int | Bool of bool
     (* constantes *)
+  | Un of unop * expression
+    (* moins unaire*)
   | Bin of binop * expression * expression
     (* expressions arithétiques *)
   | Get of string
@@ -20,6 +22,8 @@ and expression =
     (* accès dans un tableau à une position *)
   | Alloc of expression * type_expr
     (* Création d'un tableau d'une certaine taille *)
+  | New of type_expr
+    (* Création objet*)
   | Read
   | Readln
 
