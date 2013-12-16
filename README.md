@@ -33,7 +33,7 @@ For example to process the `exemples_call_graph/find.p` file:
 	./pseudopascal.sh find.p
 	
 
-It analyzes the file, saves the result in the `my_file.p.dot` file in `dot` syntax, executes the `dot` command to obtain `my_file.p.png`, and eventually opens it.
+It compiles the project, analyzes the file, saves the result in the `my_file.p.dot` file in `dot` syntax, executes the `dot` command to obtain `my_file.p.png`, and eventually opens it.
 
 Notes:
 
