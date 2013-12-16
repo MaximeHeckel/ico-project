@@ -25,4 +25,8 @@ let rec call_graph_instruction g =
   | _ -> []
 ;;
 
-let rec call_graph_fonction
+let rec call_graph_fonction f call_graph =
+  match f with
+  | Func_def(n, Definition(w,x,c,i))::r -> call_graph_fonction r call_graph;
+  (*(List.iter (Hashtbl.add graph_appel n) (remove_dups(make_call_graph_instr i))) Merci Joris \o/*)
+
