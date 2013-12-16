@@ -40,3 +40,6 @@ Notes:
 - Only give the script the name of the file, not the location. It automatically searches in the `exemples_call_graph` directory.
 - The results (`dot` file and `png` file) are created in the `export/exemples_call_graph` directory
 - It opens the `png`result with a different command, depending on your os.
+- It can process multiple files at one:
+
+		./pseudopascal.sh find.p hanoi.p
