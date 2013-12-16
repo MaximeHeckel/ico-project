@@ -6,4 +6,4 @@ middleEnd.cmo: lexer.cmo
 middleEnd.cmx: lexer.cmx
 main.cmo: lexer.cmo middleEnd.cmo
 main.cmx: lexer.cmx middleEnd.cmx
-pseudopascal.cmi: syntax.cmi 
+pseudopascal.cmi: Syntax.cmi 

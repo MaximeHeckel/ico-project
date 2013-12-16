@@ -1,5 +1,7 @@
-digraph ./exemples_call_graph/hanoi.p
- { hanoi -> WRITELN;
+digraph diagprog
+{
+ program;
+ hanoi -> WRITELN;
  hanoi -> hanoi;
  hanoi -> other;
  program -> hanoi;
