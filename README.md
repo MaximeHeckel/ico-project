@@ -37,9 +37,9 @@ It compiles the project, analyzes the file, saves the result in the `my_file.p.d
 
 Notes:
 
-- Only give the script the name of the file, not the location. It automatically searches in the `input` directory.
+- Only give to the script the name of the file, not the location. It automatically searches in the `input` directory.
 - The results (`dot` file and `png` file) are created in the `output` directory
-- It opens the `png`result with a different command, depending on your os.
-- It can process multiple files at one:
+- It opens the `png`result with a command depending on your os.
+- It can process multiple files at once:
 
 		./pseudopascal.sh find.p hanoi.p
