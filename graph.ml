@@ -33,7 +33,8 @@ let rec remove_dups lst = match lst with
 let rec call_graph_fonction f call_graph =
   match f with
   | Func_def(n, Definition(w,x,c,i))::r -> call_graph_fonction r call_graph;
-  (List.iter (Hashtbl.add call_graph n) (remove_dups(call_graph_instruction i))) (*Merci Joris \o/*)
+    (List.iter (Hashtbl.add call_graph n) (remove_dups(call_graph_instruction i))) (*Merci Joris \o/*)
+  | _ -> ()
 ;;
 
 let make_call_graph arbresyn = (*cf Joris*)
