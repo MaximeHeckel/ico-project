@@ -18,9 +18,9 @@ To clean it:
 
 	 ./pseudopascal my_directory/my_file.p
 
-For example to process the file `exemples_call_graph/find.p`:
+For example to process the file `input/find.p`:
 	
-	./pseudopascal exemples_call_graph/find.p
+	./pseudopascal input/find.p
 	
 It outputs the result in `dot` syntax.
 
@@ -28,7 +28,7 @@ It outputs the result in `dot` syntax.
 
 	./pseudopascal.sh my_file.p
 	
-For example to process the `exemples_call_graph/find.p` file:
+For example to process the `input/find.p` file:
 	
 	./pseudopascal.sh find.p
 	
@@ -37,8 +37,8 @@ It compiles the project, analyzes the file, saves the result in the `my_file.p.d
 
 Notes:
 
-- Only give the script the name of the file, not the location. It automatically searches in the `exemples_call_graph` directory.
-- The results (`dot` file and `png` file) are created in the `export/exemples_call_graph` directory
+- Only give the script the name of the file, not the location. It automatically searches in the `input` directory.
+- The results (`dot` file and `png` file) are created in the `output` directory
 - It opens the `png`result with a different command, depending on your os.
 - It can process multiple files at one:
 
