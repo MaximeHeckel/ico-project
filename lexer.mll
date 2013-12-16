@@ -11,54 +11,53 @@
 let digit = ['0'-'9']
 
 rule token = parse
-  | [' ' '\t']	{ token lexbuf }
-  | '\n'	{ NEWLINE }
-  | digit+
-  | "." digit+
-  | digit+ "." digit* as num
-		{ NUM (float_of_string num) }
-  | '+'		{ PLUS }
-  | '-'		{ MINUS }
-  | '*'		{ MULTIPLY }
-  | '/'		{ DIVIDE }
-  | '('		{ LPAREN }
-  | ')'		{ RPAREN }
-  | ';'   { SEMICOLON }
-  | _		  { token lexbuf }
- (* | "and" { AND }
-  | "or"  { OR }
-  | "not" { NOT }
+ | [' ' '\t' '\n']        { token lexbuf }
+  | ['{']([^'}'])*['}'] { token lexbuf } 
+  | digit+ as num { NUM (int_of_string num) }
+  | ';'   { SEMICOLON }  
+  | "("   { LPAREN }
+  | ")"   { RPAREN }
+  | "["   { LBRACKET }
+  | "]"   { RBRACKET }
+  | ":="  { COLONEQ } 
+  | ":"   { COLON }
+  | ","   { COMMA }
+  | "." { DOT }
+  | "var"  { VAR }
+  | "false"        { BOOL false }
+  | "true"         { BOOL true }
+  | "readln"         { READLN }
+  | "read"         { READ }
+  | "write"        { WRITE }
+  | "writeln"      { WRITELN }
+  | "program"  { PROGRAM }
+  | "begin"  { BEGIN }
+  | "end"  { END }
+  | "procedure"  { PROCEDURE }
+  | "function"  { FUNCTION }
+  | "integer"   { INTEGER }
+  | "boolean"      { BOOLEAN }
+  | "if"  { IF }
+  | "then"  { THEN }
+  | "else"  { ELSE }
+  | "array"        { ARRAY }
+  | "of"           { OF }
+  | "while"           { WHILE }
+  | "do"           { DO }
+  | "or"           { OR }
+  | "and"           { AND }
+  | "not" { NOT}
+  | "type"         { TYPE }
+  | "new" { NEW }
   | "<"   { LT }
   | "<="  { LE }
   | ">"   { GT }
   | ">="  { GE }
   | "="   { EQ }
   | "<>"  { NE }
-  | "("   { LPAREN }
-  | ")"   { RPAREN }
-  | "["   { LBRACKET }
-  | "]"   { RBRACKET } 
-  | ","   { COMMA }
-  | ":="  { COLONEQ } 
-  | ":"   { COLON }
-  | "."   { DOT }
-  | "program"  { PROGRAM } *)
-  | "begin"  { BEGIN }
-  | "end"  { END }
-  (* | "if"  { IF }
-  | "then"  { THEN }
-  | "else"  { ELSE }
-  | "while"  { WHILE }
-  | "do"  { DO }
-  | "procedure"  { PROCEDURE }
-  | "function"  { FUNCTION }
-  | "var"  { VAR }
-  | "new"  { NEW }
-  | "readln"  { READLN }
-  | "write"  { WRITE }
-  | "writeln"  { WRITELN }
-  | "integer"   { INTEGER }
-  | "boolean"  { BOOLEAN }
-  | "array"  { ARRAY }
-  | "of"  { OF } *)
-  | eof		{ raise End_of_file }
+  | '+'   { PLUS }
+  | '-'            { MINUS }
+  | '*'            { TIMES }
+  | '/'            { DIV }
+  | ['A'-'Z''a'-'z']['A'-'Z''a'-'z''0'-'9']* as id { ID (id) }
+  | eof                { raise End_of_file }

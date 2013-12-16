@@ -1,4 +1,4 @@
-open PPsyntax;;
+open Syntax;;
 open Format;;
 
 let rec typ() = function

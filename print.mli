@@ -1,1 +1,1 @@
-val program : PPsyntax.program -> unit
+val program : Syntax.program -> unit
