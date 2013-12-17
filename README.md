@@ -1,6 +1,8 @@
 #Compilation project
 [Homepage](http://www.ensiie.fr/~guillaume.burel/compilation/)
 
+This project is an pseudo-pascal syntax analizer. It processes a file written in pseudo-pascal, analizes its structure and syntax and outputs the call graph.
+
 ##Prerequisites
 You need to have `ocaml`, `ocamlyacc` and `ocamllex` installed.
 
