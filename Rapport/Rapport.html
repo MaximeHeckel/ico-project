@@ -1,0 +1,245 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: "Helvetica Neue", Helvetica, "Hiragino Sans GB", Arial, sans-serif;
+    font-size: 13px;
+    line-height: 18px;
+    color: #737373;
+    background-color: white;
+    margin: 10px 13px 10px 13px;
+}
+table {
+	margin: 10px 0 15px 0;
+	border-collapse: collapse;
+}
+td,th {	
+	border: 1px solid #ddd;
+	padding: 3px 10px;
+}
+th {
+	padding: 5px 10px;	
+}
+
+a {
+    color: #0069d6;
+}
+a:hover {
+    color: #0050a3;
+    text-decoration: none;
+}
+a img {
+    border: none;
+}
+p {
+    margin-bottom: 9px;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #404040;
+    line-height: 36px;
+}
+h1 {
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+h2 {
+    font-size: 24px;
+}
+h3 {
+    font-size: 18px;
+}
+h4 {
+    font-size: 16px;
+}
+h5 {
+    font-size: 14px;
+}
+h6 {
+    font-size: 13px;
+}
+hr {
+    margin: 0 0 19px;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+}
+blockquote {
+    padding: 13px 13px 21px 15px;
+    margin-bottom: 18px;
+    font-family:georgia,serif;
+    font-style: italic;
+}
+blockquote:before {
+    content:"\201C";
+    font-size:40px;
+    margin-left:-10px;
+    font-family:georgia,serif;
+    color:#eee;
+}
+blockquote p {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 18px;
+    margin-bottom: 0;
+    font-style: italic;
+}
+code, pre {
+    font-family: Monaco, Andale Mono, Courier New, monospace;
+}
+code {
+    background-color: #fee9cc;
+    color: rgba(0, 0, 0, 0.75);
+    padding: 1px 3px;
+    font-size: 12px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+pre {
+    display: block;
+    padding: 14px;
+    margin: 0 0 18px;
+    line-height: 16px;
+    font-size: 11px;
+    border: 1px solid #d9d9d9;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+pre code {
+    background-color: #fff;
+    color:#737373;
+    font-size: 11px;
+    padding: 0;
+}
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:10px auto;
+    }
+}
+@media print {
+	body,code,pre code,h1,h2,h3,h4,h5,h6 {
+		color: black;
+	}
+	table, pre {
+		page-break-inside: avoid;
+	}
+}
+</style>
+<title>Introduction</title>
+
+</head>
+<body>
+<div style="text-align: center">
+  <h1>Projet d'ICO</h1>
+  <h2>Maxime Heckel & Philippe Gaultier</h2>
+</div>
+
+
+<h3>Introduction</h3>
+
+<p>Compiler, corriger les erreurs de syntaxe, exécuter: tel est le cycle habituel du développeur. Cependant ces outils familiers que sont le compilateur et l'analyseur syntaxique sont plus complexes qu'ils ne semblent, d'autant que chaque langage a ses spécificités et ses règles particulières.</p>
+
+<p>Dès lors se posent les questions suivantes:</p>
+
+<ul>
+<li>Peut-on valider la syntaxe d'un programme à partir de règles de grammaires prédéfinies?</li>
+<li>Comment faire pour connaître la pile d'appel du programme, bien utile pour débugguer?</li>
+<li>Est-il possible de représenter graphiquement et simplement la structure d'un programme, même complexe?</li>
+</ul>
+
+
+<p> Ce projet répond a ces questions en prenant pour base le langage <code>Pseudo-Pascal</code>.</p>
+
+<h3>Le but du projet</h3>
+
+<p>La finalité de ce projet de compilation était de créer un analyseur syntaxique d'un programme écrit en <code>Pseudo-Pascal</code>, avec les spécifications suivantes:</p>
+
+<ul>
+<li>Les erreurs de syntaxe sont détectées</li>
+<li>La structure du programme est analysée et le résultat est le graphe d'appel du programme, donné en syntaxe <code>dot</code></li>
+<li>Le programme à analyser consiste en un seul fichier</li>
+<li>L'analyseur est écrit en <code>Ocaml</code></li>
+<li>L'analyseur utilise comme lexer <code>ocamllex</code></li>
+<li>L'analyseur utilise <code>ocamlyacc</code> pour spécifier les règles de grammaire</li>
+</ul>
+
+
+<p>En plus de cela, notre projet final accomplit les choses suivantes:</p>
+
+<ul>
+<li>A partir du graphe d'appel en syntaxe dot (résultat de l'analyse syntaxique), on obtient le graphe d'appel sous forme graphique, pour plus de lisibilité</li>
+<li>Il est possible d'analyser plusieurs fichiers à la suite, au lieu d'un seul</li>
+</ul>
+
+
+<h3>Les outils utilisés</h3>
+
+<h4>Ocaml</h4>
+
+<p>Le projet a été écrit en <code>Ocaml</code>. Pourquoi ce choix au détriment du <code>C</code>? Nous avions une expérience appronfondie de ces deux langages, et il est apparu que <code>Ocaml</code>avait plusieurs avantages dans notre situation:</p>
+
+<ul>
+<li>Facilité d'utilisation (pas de pointeurs, pas d'allocations mémoires)</li>
+<li>Langage objet</li>
+<li>Libraire standard fournie (Hashtable, lecture/écriture de fichiers, etc)</li>
+</ul>
+
+
+<p>De plus, nous n'avions pas de contrainte de performances, ce qui aurait pu faire pencher la balance en faveur du <code>C</code>.</p>
+
+<h4>Ocamllex</h4>
+
+<p>Nous avons utilisé l'outil <code>ocamllex</code> comme lexeur. Ce dernier a pour rôle de lire chaque caractère dans le fichier écrit en <code>Pseudo-Pascal</code>, et de reconnaître les motifs, nommés "tokens", spécifiés dans les règles de grammaire. Il est par exemple capable de reconnaître le token <code>if</code> en lisant le caractère <code>i</code>, puis <code>f</code>, puis <code></code>, à condition que le token <code>if</code> soit spécifié dans les règles de grammaire. De même, s'il lit <code>f</code> puis <code>i</code>, le mot-clé <code>if</code> du langage ne sera pas identifié, à raison.</p>
+
+<p> En somme, c'est grâce à lui que les mots-clés du langages sont reconnus, et différenciés des noms de variables, des noms de fonction, etc.</p>
+
+<h4>Ocamlyacc</h4>
+
+<p>La pierre manquante à l'édifice est <code>ocamlyacc</code>, qui permet d'exprimer les règles de grammaire. C'est la que la syntaxe du <code>Pseudo-Pascal</code> est exprimée. Ainsi c'est ici que l'on édicte par exemple la forme que prend la structure de contrôle conditionnelle</p>
+
+<pre><code>IF expr THEN instructions ELSE instructions
+</code></pre>
+
+<p>C'est grâce à ces règles que l'analyseur syntaxique sait que la structure</p>
+
+<pre><code>IF THEN instructions ELSE instructions
+</code></pre>
+
+<p>est invalide.</p>
+
+<p>On spécifie ainsi chaque brique élémentaire du langage: qu'est ce qu'un booléen, quelle forme prend la définition d'une fonction, quelle est la syntaxe d'une boucle, etc.</p>
+
+<h3>Conclusion</h3>
+
+<p>Ce projet nous a interpellé pour plusieurs raisons. D'abord, c'était la première fois que nous voyions le langage Ocaml dans un contexte semi-professionnel, en tout cas autre que purement académique. De plus, malgré leur apparante âpreté, l'utilité des outils <code>ocamllex</code> et <code>ocamlyacc</code> nous est rapidement apparue. Enfin, les potentiels prolongements de ce projet nous ont frappés. La création d'un langage complet ne semble plus si inaccessible.</p>
+
+<p>En conclusion, malgré certains moments de découragement, le sentiment qui demeure à la fin est la satisfaction d'avoir accompli ce qui nous apparaissait au début insurmontable, et d'avoir pu mettre en pratique nos apprentissages des cours de théorie de langage et de compilation.</p>
+</body>
+</html>
