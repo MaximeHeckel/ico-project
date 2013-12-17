@@ -1,0 +1,26 @@
+digraph diagprog
+{
+ program;
+ bigmult -> bigadd;
+ bigmult -> smallmult;
+ bigmult -> copy;
+ bigmult -> grandir;
+ bigfact -> smallmult;
+ bigfact -> grandir;
+ affiche -> WRITELN;
+ affiche -> WRITE;
+ program -> bigfact;
+ program -> READLN;
+ program -> affiche;
+ program -> pow;
+ program -> grandir;
+ smallmult -> modulo;
+ pow -> affiche;
+ pow -> WRITELN;
+ pow -> bigmult;
+ pow -> pow;
+ pow -> grandir;
+ pow -> copy;
+ grandir -> modulo;
+ bigadd -> modulo;
+}

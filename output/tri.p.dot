@@ -1,0 +1,7 @@
+digraph diagprog
+{
+ program;
+ program -> insertion;
+ program -> WRITELN;
+ program -> READLN;
+}

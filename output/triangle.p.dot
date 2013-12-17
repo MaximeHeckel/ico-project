@@ -1,0 +1,7 @@
+digraph diagprog
+{
+ program;
+ program -> triangle;
+ program -> READLN;
+ triangle -> WRITELN;
+}
