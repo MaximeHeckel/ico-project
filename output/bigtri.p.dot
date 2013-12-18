@@ -1,0 +1,13 @@
+digraph diagprog
+{
+ program;
+ affiche -> WRITELN;
+ affiche -> WRITE;
+ program -> triangle;
+ program -> READLN;
+ triangle -> affiche;
+ triangle -> grandir;
+ triangle -> bigadd;
+ grandir -> modulo;
+ bigadd -> modulo;
+}

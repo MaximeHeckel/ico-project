@@ -1,5 +1,5 @@
 (* Analyseur lexical *)
-
+(* On associe à chaque opérateur et chaque mots clés un tocken *)
 {
   open Pseudopascal
 }

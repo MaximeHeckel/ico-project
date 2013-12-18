@@ -18,7 +18,7 @@ let rec call_graph_expr g =
 
 let rec call_graph_instruction g =
   (* Fonction call_graph instruction qui match récursivement une instruction
-   * Si c'est une séquence d'instruction sur la tête de la liste puis sur la séquence de la queue de la liste
+   * Si c'est une séquence d'instruction on appelle la fonction sur la tête de la liste puis sur la séquence de la queue de la liste d'instructions
    * Si on a un opérateur conditionnel on appelle la fonction sur les deux instructions ainsi que la fonction callgraph_expr sur l'expression conditionnelle
    * Pour l'affectation on applique call_graph_expr sur l'expression en question
    * Pour la boucle while on appelle callgraph_expr sur l'expression qui lance la boucle et call_graph_instruction sur l'instruction en question
@@ -65,7 +65,7 @@ let print_call_graph_couple i f init =
 ;;
 
 let print_call_graph graph name =
-  (* Fonction permettant d'exporter le graph d'appel en .dot obtenu *)
+  (* Fonction permettant d'exporter le graph d'appel en .dot obtenu suite au parsage du fichier *)
   let dotfile = open_out(""^name^".dot") in
   print_string ("digraph diagprog\n{\n program;\n"^ (Hashtbl.fold print_call_graph_couple graph "") ^ "}\n");
   close_out dotfile
