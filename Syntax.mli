@@ -1,4 +1,9 @@
-type type_expr = Integer | Boolean | Array of type_expr;;
+(* Définition du type type_expr en accord avec l'énoncé contenant les int les bool et les tableaux de type_expr *)
+type type_expr =
+    Integer
+  | Boolean 
+  | Array of type_expr;;
+
 type var_list = ((string list) * type_expr) list;;
 
 type program =Program of var_list * (func_def list) * instruction
@@ -8,18 +13,19 @@ and func_def = Func_def of string * definition
 and definition = Definition of var_list * type_expr option * var_list * instruction
 
 and expression =
+  (* Définition du type expression en accord avec l'énoncé contenant les éléments suivants : *)
   | Int of int | Bool of bool
-    (* constantes *)
+    (* Constantes *)
   | Un of unop * expression
-    (* moins unaire*)
+    (* Moins unaire*)
   | Bin of binop * expression * expression
-    (* expressions arithétiques *)
+    (* Expressions arithétiques *)
   | Get of string
-    (* accès à une variable *)
+    (* Accès à une variable *)
   | Function_call of string * expression list
-    (* appel de fonction *)
+    (* Appel de fonction *)
   | Geti of expression * expression
-    (* accès dans un tableau à une position *)
+    (* Accès dans un tableau à une position *)
   | Alloc of expression * type_expr
     (* Création d'un tableau d'une certaine taille *)
   | New of type_expr
@@ -28,16 +34,27 @@ and expression =
   | Readln
 
 and binop =
-  | Plus | Minus | Times | Div
-    (* arithmétique *)
-  | Or |  And
-  | Lt | Le | Gt | Ge | Eq | Ne
-    (* comparaisons *)
+  (* Définition du type opérateur binaire donnant les opération arithmétiques basiques ainsi que les opérateur de comparason *)
+  | Plus
+  | Minus
+  | Times
+  | Div
+    (* Arithmétique *)
+  | Or
+  | And
+  | Lt
+  | Le
+  | Gt
+  | Ge
+  | Eq
+  | Ne
+    (* Comparaisons *)
 
 and unop =
   | UMinus | Not
 
 and instruction =
+  (* Définition du type instruction en accord avec l'énoncé contenant les éléments suivants : *)
   | Set of string * expression
     (* Affectation d'une variable *)
   | Sequence of instruction list
