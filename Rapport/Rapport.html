@@ -152,75 +152,84 @@ sup {
 	}
 }
 </style>
-<title>Introduction</title>
+<title>I)Introduction</title>
 
 </head>
 <body>
 <div style="text-align: center">
   <h1>Projet d'ICO</h1>
+  
   <h2>Maxime Heckel & Philippe Gaultier</h2>
+  
 </div>
 
 
-<h3>Introduction</h3>
+<p><br></p>
+
+<hr>
+
+
+<h3>I)Introduction</h3>
 
 <p>Compiler, corriger les erreurs de syntaxe, exécuter: tel est le cycle habituel du développeur. Cependant ces outils familiers que sont le compilateur et l'analyseur syntaxique sont plus complexes qu'ils ne semblent, d'autant que chaque langage a ses spécificités et ses règles particulières.</p>
 
 <p>Dès lors se posent les questions suivantes:</p>
 
 <ul>
-<li>Peut-on valider la syntaxe d'un programme à partir de règles de grammaires prédéfinies?</li>
-<li>Comment faire pour connaître la pile d'appel du programme, bien utile pour débugguer?</li>
-<li>Est-il possible de représenter graphiquement et simplement la structure d'un programme, même complexe?</li>
+<li><p>Peut-on valider la syntaxe d'un programme à partir de règles de grammaires prédéfinies?</p></li>
+<li><p>Comment faire pour connaître la pile d'appel du programme, bien utile pour débugguer?</p></li>
+<li><p>Est-il possible de représenter graphiquement et simplement la structure d'un programme, même complexe?</p></li>
 </ul>
 
 
 <p> Ce projet répond a ces questions en prenant pour base le langage <code>Pseudo-Pascal</code>.</p>
 
-<h3>Le but du projet</h3>
+<h3>II)Le but du projet</h3>
 
 <p>La finalité de ce projet de compilation était de créer un analyseur syntaxique d'un programme écrit en <code>Pseudo-Pascal</code>, avec les spécifications suivantes:</p>
 
 <ul>
-<li>Les erreurs de syntaxe sont détectées</li>
-<li>La structure du programme est analysée et le résultat est le graphe d'appel du programme, donné en syntaxe <code>dot</code></li>
-<li>Le programme à analyser consiste en un seul fichier</li>
-<li>L'analyseur est écrit en <code>Ocaml</code></li>
-<li>L'analyseur utilise comme lexer <code>ocamllex</code></li>
-<li>L'analyseur utilise <code>ocamlyacc</code> pour spécifier les règles de grammaire</li>
+<li><p>Les erreurs de syntaxe sont détectées</p></li>
+<li><p>La structure du programme est analysée et le résultat est le graphe d'appel du programme, donné en syntaxe <code>dot</code></p></li>
+<li><p>Le programme à analyser consiste en un seul fichier</p></li>
+<li><p>L'analyseur est écrit en <code>Ocaml</code></p></li>
+<li><p>L'analyseur utilise comme lexer <code>ocamllex</code></p></li>
+<li><p>L'analyseur utilise <code>ocamlyacc</code> pour spécifier les règles de grammaire</p></li>
 </ul>
 
 
 <p>En plus de cela, notre projet final accomplit les choses suivantes:</p>
 
 <ul>
-<li>A partir du graphe d'appel en syntaxe dot (résultat de l'analyse syntaxique), on obtient le graphe d'appel sous forme graphique, pour plus de lisibilité</li>
-<li>Il est possible d'analyser plusieurs fichiers à la suite, au lieu d'un seul</li>
+<li><p>A partir du graphe d'appel en syntaxe dot (résultat de l'analyse syntaxique), on obtient le graphe d'appel sous forme graphique, pour plus de lisibilité</p></li>
+<li><p>Il est possible d'analyser plusieurs fichiers à la suite, au lieu d'un seul</p></li>
 </ul>
 
 
-<h3>Les outils utilisés</h3>
+<h3>III)Les outils utilisés</h3>
 
-<h4>Ocaml</h4>
+<h4>1)Ocaml</h4>
 
 <p>Le projet a été écrit en <code>Ocaml</code>. Pourquoi ce choix au détriment du <code>C</code>? Nous avions une expérience appronfondie de ces deux langages, et il est apparu que <code>Ocaml</code>avait plusieurs avantages dans notre situation:</p>
 
 <ul>
-<li>Facilité d'utilisation (pas de pointeurs, pas d'allocations mémoires)</li>
-<li>Langage objet</li>
-<li>Libraire standard fournie (Hashtable, lecture/écriture de fichiers, etc)</li>
+<li><p>Facilité d'utilisation (pas de pointeurs, pas d'allocations mémoires)</p></li>
+<li><p>Langage objet</p></li>
+<li><p>Libraire standard fournie (Hashtable, lecture/écriture de fichiers, etc)</p></li>
 </ul>
 
 
 <p>De plus, nous n'avions pas de contrainte de performances, ce qui aurait pu faire pencher la balance en faveur du <code>C</code>.</p>
 
-<h4>Ocamllex</h4>
+<h4>2)Ocamllex</h4>
 
-<p>Nous avons utilisé l'outil <code>ocamllex</code> comme lexeur. Ce dernier a pour rôle de lire chaque caractère dans le fichier écrit en <code>Pseudo-Pascal</code>, et de reconnaître les motifs, nommés "tokens", spécifiés dans les règles de grammaire. Il est par exemple capable de reconnaître le token <code>if</code> en lisant le caractère <code>i</code>, puis <code>f</code>, puis <code></code>, à condition que le token <code>if</code> soit spécifié dans les règles de grammaire. De même, s'il lit <code>f</code> puis <code>i</code>, le mot-clé <code>if</code> du langage ne sera pas identifié, à raison.</p>
+<p>Nous avons utilisé l'outil <code>ocamllex</code> comme lexeur. Ce dernier a pour rôle de lire chaque caractère dans le fichier écrit en <code>Pseudo-Pascal</code>, et de reconnaître les motifs, nommés "tokens", spécifiés dans les règles de grammaire.</p>
+
+<p>Il est par exemple capable de reconnaître le token <code>if</code> en lisant le caractère <code>i</code>, puis <code>f</code>, puis <code></code>, à condition que le token <code>if</code> soit spécifié dans les règles de grammaire. De même, s'il lit <code>f</code> puis <code>i</code>, le mot-clé <code>if</code> du langage ne sera pas identifié, à raison.</p>
 
 <p> En somme, c'est grâce à lui que les mots-clés du langages sont reconnus, et différenciés des noms de variables, des noms de fonction, etc.</p>
 
-<h4>Ocamlyacc</h4>
+<h4>3)Ocamlyacc</h4>
 
 <p>La pierre manquante à l'édifice est <code>ocamlyacc</code>, qui permet d'exprimer les règles de grammaire. C'est la que la syntaxe du <code>Pseudo-Pascal</code> est exprimée. Ainsi c'est ici que l'on édicte par exemple la forme que prend la structure de contrôle conditionnelle</p>
 
@@ -236,10 +245,14 @@ sup {
 
 <p>On spécifie ainsi chaque brique élémentaire du langage: qu'est ce qu'un booléen, quelle forme prend la définition d'une fonction, quelle est la syntaxe d'une boucle, etc.</p>
 
-<h3>Conclusion</h3>
+<h3>IV)Conclusion</h3>
 
 <p>Ce projet nous a interpellé pour plusieurs raisons. D'abord, c'était la première fois que nous voyions le langage Ocaml dans un contexte semi-professionnel, en tout cas autre que purement académique. De plus, malgré leur apparante âpreté, l'utilité des outils <code>ocamllex</code> et <code>ocamlyacc</code> nous est rapidement apparue. Enfin, les potentiels prolongements de ce projet nous ont frappés. La création d'un langage complet ne semble plus si inaccessible.</p>
 
 <p>En conclusion, malgré certains moments de découragement, le sentiment qui demeure à la fin est la satisfaction d'avoir accompli ce qui nous apparaissait au début insurmontable, et d'avoir pu mettre en pratique nos apprentissages des cours de théorie de langage et de compilation.</p>
+
+<h3>V)Annexe</h3>
+
+<p>Ci-joint le fichier Readme, qui présente succintement le projet et qui contient le manuel d'utilisation.</p>
 </body>
 </html>
